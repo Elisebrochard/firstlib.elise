@@ -1,9 +1,9 @@
 Package: firstlib.elise
-Title: What the Package Does (One Line, Title Case)
+Title: Analyses des données vélos sur Nantes
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Elise", "Brochard", , "eli.brochard@gmail.com", role = c("aut", "cre"))
+Description: Le package fournit des outils d'analyses des données de trajets vélos sur Nantes.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
