@@ -13,6 +13,14 @@
 #'
 #' @export
 filtrer_trajet <- function(trajet, boucle) {
-  dplyr::filter(trajet, `Numéro de boucle` %in% boucle)
+
+  # Si boucle est NULL → on renvoie le data.frame tel quel
+  if (is.null(boucle)) {
+    return(trajet)
+  }
+
+  trajet |>
+    dplyr::filter(`Numéro de boucle` %in% boucle)
 }
+
 

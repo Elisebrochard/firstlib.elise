@@ -1,0 +1,53 @@
+---
+title: "utilisation_filtre_et_graphique"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{utilisation_filtre_et_graphique}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(firstlib.elise)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+# Charger les données du package
+data("df_velo")
+
+# Aperçu des données
+# Ce jeu de données contient les comptages vélo par boucle et par jour.
+head(df_velo)
+
+# 1. Filtrer les données sur une boucle spécifique
+#La fonction filtrer_trajet() permet de sélectionner uniquement les observations
+#correspondant à une ou plusieurs boucles de comptage.
+#Ici, nous filtrons la boucle "880", ce qui permet de se concentrer sur un point précis du réseau.
+df_filtre <- filtrer_trajet(df_velo, boucle = "880")
+
+# 2. Calculer la distribution des trajets par jour de la semaine
+#La fonction calcul_distribution_semaine() agrège les données filtrées pour obtenir,
+#pour chaque jour de la semaine, le nombre total de trajets enregistrés.
+
+#Cela permet d’identifier les jours les plus fréquentés.
+distribution <- calcul_distribution_semaine(df_filtre)
+distribution
+
+# 3. Produire un graphique de la distribution
+#La fonction plot_distribution_semaine() génère automatiquement un graphique en barres
+#montrant la répartition des trajets par jour de la semaine.
+
+#Ce graphique est utile pour visualiser les tendances hebdomadaires.
+plot_distribution_semaine(df_filtre)
+
+```
+
